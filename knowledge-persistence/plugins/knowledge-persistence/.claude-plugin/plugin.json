@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "knowledge-persistence",
+  "description": "Capture the durable knowledge a task produced (task logs, specs, reusable skills) without polluting the source of truth. Auto-detects the document language (Chinese, Japanese, or English).",
+  "version": "1.0.0",
+  "author": { "name": "dereck" },
+  "license": "Apache-2.0",
+  "keywords": ["workflow", "skill", "claude-code"]
+}
