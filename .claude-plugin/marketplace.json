@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "duz-skills",
+  "description": "Productivity and workflow plugins for Claude Code by dereck.",
+  "owner": { "name": "dereck" },
+  "plugins": [
+    {
+      "name": "knowledge-persistence",
+      "source": "./knowledge-persistence/plugins/knowledge-persistence",
+      "description": "Capture the durable knowledge a task produced (task logs, specs, reusable skills) without polluting the source of truth. Auto-detects the document language (Chinese, Japanese, or English).",
+      "category": "development",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "dev-task-workflow",
+      "source": "./dev-task-workflow/plugins/dev-task-workflow",
+      "description": "Turn a non-trivial development task into a traceable workflow: frame scope, read context first, pick the smallest execution shape, execute with provenance, and validate before handing off.",
+      "category": "development",
+      "license": "Apache-2.0"
+    }
+  ]
+}
