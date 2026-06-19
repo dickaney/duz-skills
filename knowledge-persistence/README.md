@@ -4,23 +4,21 @@ A Claude Code skill for capturing the **durable knowledge** a task produced — 
 
 It also **auto-detects the document language** and writes the persisted artifact in **Chinese (中文), Japanese (日本語), or English**, based on the user's explicit request, the existing docs, or the working language of the conversation.
 
-This repository is a self-contained **Claude Code plugin marketplace** holding a single plugin with this one skill.
+This plugin is part of the **[duz-skills](https://github.com/dickaney/duz-skills) marketplace**.
 
 ## Install (Claude Code)
 
 ```shell
-/plugin marketplace add dereck/knowledge-persistence
-/plugin install knowledge-persistence@knowledge-persistence
+/plugin marketplace add https://github.com/dickaney/duz-skills.git
+/plugin install knowledge-persistence@duz-skills
 ```
-
-> Replace `dereck` with your actual GitHub owner/org once you push this repo.
 
 To test locally before pushing:
 
 ```shell
-/plugin marketplace add ./knowledge-persistence
-/plugin install knowledge-persistence@knowledge-persistence
-/plugin validate ./knowledge-persistence
+/plugin marketplace add ./
+/plugin install knowledge-persistence@duz-skills
+/plugin validate ./
 ```
 
 ## Use
@@ -38,8 +36,6 @@ Once installed, the skill is model-invoked: Claude consults it automatically whe
 
 ```
 knowledge-persistence/
-├── .claude-plugin/
-│   └── marketplace.json
 └── plugins/
     └── knowledge-persistence/
         ├── .claude-plugin/
@@ -51,7 +47,7 @@ knowledge-persistence/
 
 ## Versioning
 
-The plugin version lives in `plugins/knowledge-persistence/.claude-plugin/plugin.json`. Bump it on every release so installed users receive the update. (The marketplace entry intentionally omits `version` so the manifest is the single source of truth.)
+The plugin version lives in `plugins/knowledge-persistence/.claude-plugin/plugin.json`. Bump it on every release so installed users receive the update. (The marketplace entry in the root `marketplace.json` intentionally omits `version` so the plugin manifest is the single source of truth.)
 
 ## License
 

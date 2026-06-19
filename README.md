@@ -1,43 +1,47 @@
 # Duz Skills
 
-Claude Code skill marketplaces for reusable development workflows.
+Claude Code skill marketplace for reusable development workflows.
 
-This repository currently contains two standalone marketplace directories. Each directory has its own `.claude-plugin/marketplace.json`, plugin manifest, skill implementation, README, and license file.
+This repository is a single marketplace. The root `.claude-plugin/marketplace.json` registers all plugins. Each plugin lives in its own subdirectory with its plugin manifest, skill implementation, README, and license file.
 
 ## Skills
 
-| Marketplace | Skill | Purpose |
-| --- | --- | --- |
-| [`dev-task-workflow`](./dev-task-workflow) | `dev-task-workflow` | Turns a non-trivial development task into a traceable workflow: frame scope, read context first, pick the smallest execution shape, execute with provenance, and validate before handing off. |
-| [`knowledge-persistence`](./knowledge-persistence) | `knowledge-persistence` | Captures durable knowledge produced by a task, including task logs, specs, references, and reusable skills, without polluting the source of truth. |
+| Plugin | Purpose |
+| --- | --- |
+| [`dev-task-workflow`](./dev-task-workflow) | Turns a non-trivial development task into a traceable workflow: frame scope, read context first, pick the smallest execution shape, execute with provenance, and validate before handing off. |
+| [`knowledge-persistence`](./knowledge-persistence) | Captures durable knowledge produced by a task, including task logs, specs, references, and reusable skills, without polluting the source of truth. |
 
-## Install Locally
+## Install
 
-Install each marketplace from its directory:
-
-```shell
-/plugin marketplace add ./dev-task-workflow
-/plugin install dev-task-workflow@dev-task-workflow
-
-/plugin marketplace add ./knowledge-persistence
-/plugin install knowledge-persistence@knowledge-persistence
-```
-
-Validate the marketplaces before publishing or sharing:
+**Remote (from GitHub):**
 
 ```shell
-/plugin validate ./dev-task-workflow
-/plugin validate ./knowledge-persistence
+/plugin marketplace add https://github.com/dickaney/duz-skills.git
+/plugin install dev-task-workflow@duz-skills
+/plugin install knowledge-persistence@duz-skills
 ```
 
-## Publish Layout
+**Local:**
 
-The repository root is a collection of marketplaces, not a marketplace itself. Claude Code marketplace metadata lives inside each skill directory:
+```shell
+/plugin marketplace add ./
+/plugin install dev-task-workflow@duz-skills
+/plugin install knowledge-persistence@duz-skills
+```
+
+Validate before publishing or sharing:
+
+```shell
+/plugin validate ./
+```
+
+## Repository Layout
 
 ```text
+.claude-plugin/
+└── marketplace.json          ← single marketplace entry point
+
 dev-task-workflow/
-├── .claude-plugin/
-│   └── marketplace.json
 └── plugins/
     └── dev-task-workflow/
         ├── .claude-plugin/
@@ -47,8 +51,6 @@ dev-task-workflow/
                 └── SKILL.md
 
 knowledge-persistence/
-├── .claude-plugin/
-│   └── marketplace.json
 └── plugins/
     └── knowledge-persistence/
         ├── .claude-plugin/
@@ -57,11 +59,6 @@ knowledge-persistence/
             └── knowledge-persistence/
                 └── SKILL.md
 ```
-
-If publishing these as remote marketplaces, publish or expose each marketplace directory in the same shape shown above, then update the install commands in the corresponding skill README:
-
-- [`dev-task-workflow/README.md`](./dev-task-workflow/README.md)
-- [`knowledge-persistence/README.md`](./knowledge-persistence/README.md)
 
 ## Versioning
 

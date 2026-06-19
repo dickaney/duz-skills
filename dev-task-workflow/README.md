@@ -4,23 +4,21 @@ A Claude Code skill that turns a non-trivial development task into a **traceable
 
 It is designed to trigger on substantial work (multi-file changes, unclear requirements, production/data/security risk, multi-step tasks) and to stay out of the way for trivial one-line edits.
 
-This repository is a self-contained **Claude Code plugin marketplace** holding a single plugin with this one skill.
+This plugin is part of the **[duz-skills](https://github.com/dickaney/duz-skills) marketplace**.
 
 ## Install (Claude Code)
 
 ```shell
-/plugin marketplace add dereck/dev-task-workflow
-/plugin install dev-task-workflow@dev-task-workflow
+/plugin marketplace add https://github.com/dickaney/duz-skills.git
+/plugin install dev-task-workflow@duz-skills
 ```
-
-> Replace `dereck` with your actual GitHub owner/org once you push this repo.
 
 To test locally before pushing:
 
 ```shell
-/plugin marketplace add ./dev-task-workflow
-/plugin install dev-task-workflow@dev-task-workflow
-/plugin validate ./dev-task-workflow
+/plugin marketplace add ./
+/plugin install dev-task-workflow@duz-skills
+/plugin validate ./
 ```
 
 ## Use
@@ -38,8 +36,6 @@ Once installed, the skill is model-invoked: Claude consults it automatically whe
 
 ```
 dev-task-workflow/
-├── .claude-plugin/
-│   └── marketplace.json
 └── plugins/
     └── dev-task-workflow/
         ├── .claude-plugin/
@@ -51,7 +47,7 @@ dev-task-workflow/
 
 ## Versioning
 
-The plugin version lives in `plugins/dev-task-workflow/.claude-plugin/plugin.json`. Bump it on every release so installed users receive the update. (The marketplace entry intentionally omits `version` so the manifest is the single source of truth.)
+The plugin version lives in `plugins/dev-task-workflow/.claude-plugin/plugin.json`. Bump it on every release so installed users receive the update. (The marketplace entry in the root `marketplace.json` intentionally omits `version` so the plugin manifest is the single source of truth.)
 
 ## License
 
