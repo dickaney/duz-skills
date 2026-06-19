@@ -1,0 +1,24 @@
+services:
+  workspace-duz-skills:
+    build:
+      context: ..
+      dockerfile: .claude/Dockerfile
+      args:
+        USER_UID: "501"
+        USER_GID: "20"
+    container_name: workspace-duz-skills
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace
+      - duz-skills-home:/home/node
+    ports:
+      - "3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    tty: true
+    stdin_open: true
+    environment:
+      TZ: Asia/Tokyo
+
+volumes:
+  duz-skills-home:
